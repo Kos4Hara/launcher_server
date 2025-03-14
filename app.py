@@ -4,21 +4,21 @@ app = Flask(__name__)
 
 @app.route('/')
 def home():
-    return "Добро пожаловать в лаунчер игры!"
+    return "Сервер для лаунчера работает!"
 
-@app.route('/start_game')
+@app.route('/start_game', methods=['GET'])
 def start_game():
-    print("Игра запущена!")  # Лог на сервере
-    return jsonify({"status": "success", "message": "Игра запущена!"})
+    print("Получен запрос на запуск игры с клиента.")
+    return jsonify({"status": "success", "message": "Игра успешно запущена!"})
 
-@app.route('/download')
+@app.route('/download', methods=['GET'])
 def download():
-    print("Началась загрузка!")
-    return jsonify({"status": "success", "message": "Загрузка началась!"})
+    print("Запрос на скачивание.")
+    return jsonify({"status": "success", "message": "Скачивание началось!"})
 
-@app.route('/update')
+@app.route('/update', methods=['GET'])
 def update():
-    print("Обновление началось!")
+    print("Запрос на обновление.")
     return jsonify({"status": "success", "message": "Обновление началось!"})
 
 if __name__ == '__main__':
