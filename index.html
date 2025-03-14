@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Somewhere Below BETA</title>
+    <style>
+        body {
+            background-color: #222222;
+            color: white;
+            font-family: Arial, sans-serif;
+            text-align: left;
+            margin: 0;
+            padding: 0;
+            display: flex;
+            flex-direction: column;
+            align-items: flex-start;
+            padding-left: 20px;
+        }
+
+        h1 {
+            margin-top: 50px;
+            color: white;
+        }
+
+        .button {
+            background-image: url('https://i.pinimg.com/originals/27/20/7e/27207e00b48e6fbca05f07537b121280.jpg');
+            background-size: cover;
+            border: none;
+            color: white;
+            padding: 15px 30px;
+            text-align: center;
+            font-size: 20px;
+            margin: 10px 0;
+            cursor: pointer;
+            transition: background-color 0.3s;
+            border-radius: 5px;
+            height: 50px;
+            width: auto;
+        }
+
+        .button:hover {
+            background-color: rgba(255, 0, 0, 0.5);
+        }
+
+        footer {
+            margin-top: auto;
+            width: 100%;
+            text-align: center;
+        }
+    </style>
+</head>
+<body>
+
+<h1>Somewhere Below BETA</h1>
+<button class="button" id="start-button">Запустить Игру</button>
+<button class="button" id="update-button">Обновить</button>
+<button class="button" id="download-button">Скачать</button>
+<button class="button" id="exit-button">Выход</button>
+<button class="button" id="website-button">Наш сайт</button>
+
+<script>
+    const SERVER_URL = 'https://my-server.onrender.com'; // Замените на свой сервер
+
+    document.getElementById('start-button').addEventListener('click', () => {
+        fetch(`${SERVER_URL}/start_game`)
+            .then(response => response.json())
+            .then(data => alert(data.message))
+            .catch(err => console.error('Ошибка:', err));
+    });
+
+    document.getElementById('download-button').addEventListener('click', () => {
+        fetch(`${SERVER_URL}/download`)
+            .then(response => response.json())
+            .then(data => alert(data.message))
+            .catch(err => console.error('Ошибка:', err));
+    });
+
+    document.getElementById('update-button').addEventListener('click', () => {
+        fetch(`${SERVER_URL}/update`)
+            .then(response => response.json())
+            .then(data => alert(data.message))
+            .catch(err => console.error('Ошибка:', err));
+    });
+
+    document.getElementById('website-button').addEventListener('click', () => {
+        window.open('https://kvd-entertainment.tilda.ws', '_blank');
+    });
+
+    document.getElementById('exit-button').addEventListener('click', () => {
+        fetch(`${SERVER_URL}/exit_app`)
+            .catch(err => console.error('Ошибка:', err));
+    });
+</script>
+
+<footer>
+    <p>&copy; KVD Entertainment</p>
+</footer>
+
+</body>
+</html>
