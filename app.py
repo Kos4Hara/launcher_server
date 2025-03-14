@@ -2,24 +2,25 @@ from flask import Flask, jsonify
 
 app = Flask(__name__)
 
-@app.route('/')
-def home():
-    return "Сервер для лаунчера работает!"
-
-@app.route('/start_game', methods=['GET'])
+@app.route('/start_game')
 def start_game():
-    print("Получен запрос на запуск игры с клиента.")
-    return jsonify({"status": "success", "message": "Игра успешно запущена!"})
+    print("Запрос на запуск игры получен!")
+    return "Игра запускается!"
 
-@app.route('/download', methods=['GET'])
+@app.route('/download')
 def download():
-    print("Запрос на скачивание.")
-    return jsonify({"status": "success", "message": "Скачивание началось!"})
+    print("Запрос на скачивание!")
+    return "Начато скачивание."
 
-@app.route('/update', methods=['GET'])
+@app.route('/update')
 def update():
-    print("Запрос на обновление.")
-    return jsonify({"status": "success", "message": "Обновление началось!"})
+    print("Запрос на обновление!")
+    return "Обновление началось."
+
+@app.route('/exit_app')
+def exit_app():
+    print("Запрос на выход!")
+    return "Выход из приложения."
 
 if __name__ == '__main__':
     import os
